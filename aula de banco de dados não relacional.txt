@@ -1,0 +1,287 @@
+Biblioteca> db.Livros.insertOne({ "Titulo": "Dom Masmurro","Autor":"Machado De Asis","Ano": 1899})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69aa0fe5ef4fdc8e387c2907')
+}
+Biblioteca> db.Livros.insertOne({"Titulo":"1984","Autor":"George Orwell","ano": 1949})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69aa109eef4fdc8e387c2908')
+}
+Biblioteca> db.Livros.insertOne({"Titulo":"O Pequeno Principe","Autor":"Antoine de Saint-Exupery","ano": 1943})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69aa1143ef4fdc8e387c2909')
+}
+Biblioteca> db.Livros.find()
+[
+  {
+    _id: ObjectId('69aa0fe5ef4fdc8e387c2907'),
+    Titulo: 'Dom Masmurro',
+    Autor: 'Machado De Asis',
+    Ano: 1899
+  },
+  {
+    _id: ObjectId('69aa109eef4fdc8e387c2908'),
+    Titulo: '1984',
+    Autor: 'George Orwell',
+    ano: 1949
+  },
+  {
+    _id: ObjectId('69aa1143ef4fdc8e387c2909'),
+    Titulo: 'O Pequeno Principe',
+    Autor: 'Antoine de Saint-Exupery',
+    ano: 1943
+  }
+]
+Biblioteca> use Escola
+switched to db Escola
+Escola> db.Alunos.insertOne({"Nome":"Ana Souza","Idade":17,"Nota":9.5})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69aa22a8ef4fdc8e387c290a')
+}
+Escola> db.Alunos.insertOne({"Nome":"Carlos Lima","Idade":16,"Nota":8.7})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69aa22d9ef4fdc8e387c290b')
+}
+Escola> db.Alunos.insertOne({"Nome":"Beatriz Costa","Idade":18,"Nota":7.9})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69aa230bef4fdc8e387c290c')
+}
+Escola> db.Alunos.find({Nota:{$gt:8}})
+[
+  {
+    _id: ObjectId('69aa22a8ef4fdc8e387c290a'),
+    Nome: 'Ana Souza',
+    Idade: 17,
+    Nota: 9.5
+  },
+  {
+    _id: ObjectId('69aa22d9ef4fdc8e387c290b'),
+    Nome: 'Carlos Lima',
+    Idade: 16,
+    Nota: 8.7
+  }
+]
+Escola> use Loja
+switched to db Loja
+Loja> db.Pedidos.insertOne{"Cliente": " João Silva",
+| "Data": "2025-02-20",
+| "Itens": [
+|       {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+|       {"Produto": "Mouse" , "Quantidade": 2," Preço": 150 },
+| ],
+| "Total": 4800
+| }
+| {
+|
+| "Cliente": " Maria Oliveira",
+| "Data": "2025-02-18,
+| "Itens":[
+|       {"Produto":"Teclado Mecanico"," Quantidade": 1," Preço": 350},
+|       {"Produto": "Monitor 24 " , "Quantidade": 1," Preço": 1200 },
+| ],
+| "Total": 1550
+| }
+Uncaught:
+SyntaxError: Missing semicolon. (1:20)
+
+> 1 | db.Pedidos.insertOne{"Cliente": " João Silva",
+    |                     ^
+  2 | "Data": "2025-02-20",
+  3 | "Itens": [
+  4 |   {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+
+Loja> {"Cliente": " João Silva",
+| "Data": "2025-02-20",
+| "Itens": [
+|       {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+|       {"Produto": "Mouse" , "Quantidade": 2," Preço": 150 },
+| ],
+| "Total": 4800
+| }
+| {
+|
+| "Cliente": " Maria Oliveira",
+| "Data": "2025-02-18,
+| "Itens":[
+|       {"Produto":"Teclado Mecanico"," Quantidade": 1," Preço": 350},
+|       {"Produto": "Monitor 24 " , "Quantidade": 1," Preço": 1200 },
+| ],
+| "Total": 1550
+| }
+Uncaught:
+SyntaxError: Missing semicolon. (1:10)
+
+> 1 | {"Cliente": " João Silva",
+    |           ^
+  2 | "Data": "2025-02-20",
+  3 | "Itens": [
+  4 |   {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+
+Loja> db.Pedidos.insertOne{"Cliente": " João Silva",
+| | "Data": "2025-02-20",
+| | "Itens": [
+| |       {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+| |       {"Produto": "Mouse" , "Quantidade": 2," Preço": 150 },
+| | ],
+| | "Total": 4800
+| | }
+| | {
+| |
+| | "Cliente": " Maria Oliveira",
+| | "Data": "2025-02-18,
+| | "Itens":[
+| |       {"Produto":"Teclado Mecanico"," Quantidade": 1," Preço": 350},
+| |       {"Produto": "Monitor 24 " , "Quantidade": 1," Preço": 1200 },
+| | ],
+| | "Total": 1550})
+Uncaught:
+SyntaxError: Missing semicolon. (1:20)
+
+> 1 | db.Pedidos.insertOne{"Cliente": " João Silva",
+    |                     ^
+  2 | | "Data": "2025-02-20",
+  3 | | "Itens": [
+  4 | |       {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+
+Loja> db.Pedidos.insertMany{("Cliente": " João Silva",
+| "Data": "2025-02-20",
+| "Itens": [
+|       {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+|       {"Produto": "Mouse" , "Quantidade": 2," Preço": 150 },
+| ],
+| "Total": 4800
+| })
+| {(
+|
+| "Cliente": " Maria Oliveira",
+| "Data": "2025-02-18,
+| "Itens":[
+|       {"Produto":"Teclado Mecanico"," Quantidade": 1," Preço": 350},
+|       {"Produto": "Monitor 24 " , "Quantidade": 1," Preço": 1200 },
+| ],
+| "Total": 1550
+| })
+Uncaught:
+SyntaxError: Missing semicolon. (1:21)
+
+> 1 | db.Pedidos.insertMany{("Cliente": " João Silva",
+    |                      ^
+  2 | "Data": "2025-02-20",
+  3 | "Itens": [
+  4 |   {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+
+Loja>  db.Pedidos.insertMany("Cliente": " João Silva",
+| "Data": "2025-02-20",
+| "Itens": [
+|       {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+|       {"Produto": "Mouse" , "Quantidade": 2," Preço": 150 },
+| ],
+| "Total": 4800
+| }
+| {
+|
+| "Cliente": " Maria Oliveira",
+| "Data": "2025-02-18,
+| "Itens":[
+|       {"Produto":"Teclado Mecanico"," Quantidade": 1," Preço": 350},
+|       {"Produto": "Monitor 24 " , "Quantidade": 1," Preço": 1200 },
+| ],
+| "Total": 1550
+| }
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:32)
+
+> 1 |  db.Pedidos.insertMany("Cliente": " João Silva",
+    |                                 ^
+  2 | "Data": "2025-02-20",
+  3 | "Itens": [
+  4 |   {"Produto": "Notebook" , "Quantidade": 1," Preço": 4500 },
+
+Loja> db.Pedidos.insertMany([
+| {
+|  "Cliente": "João Silva",
+|  "Data": "2025-02-20",
+|  "Itens": [
+|    {"Produto": "Notebook", "Quantidade": 1, "Preco": 4500},
+|    {"Produto": "Mouse", "Quantidade": 2, "Preco": 150}
+|  ],
+|  "Total": 4800
+| },
+| {
+|  "Cliente": "Maria Oliveira",
+|  "Data": "2025-02-18",
+|  "Itens": [
+|    {"Produto": "Teclado Mecanico", "Quantidade": 1, "Preco": 350},
+|    {"Produto": "Monitor 24", "Quantidade": 1, "Preco": 1200}
+|  ],
+|  "Total": 1550
+| }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69aa28d7ef4fdc8e387c290d'),
+    '1': ObjectId('69aa28d7ef4fdc8e387c290e')
+  }
+}
+Loja> db.Pedidos.find({"Data":{"$gte":"2025-02-19"}})
+[
+  {
+    _id: ObjectId('69aa28d7ef4fdc8e387c290d'),
+    Cliente: 'João Silva',
+    Data: '2025-02-20',
+    Itens: [
+      { Produto: 'Notebook', Quantidade: 1, Preco: 4500 },
+      { Produto: 'Mouse', Quantidade: 2, Preco: 150 }
+    ],
+    Total: 4800
+  }
+]
+Loja> db.Pedidos.find({ "Total": { $gt: 1000 } })
+[
+  {
+    _id: ObjectId('69aa28d7ef4fdc8e387c290d'),
+    Cliente: 'João Silva',
+    Data: '2025-02-20',
+    Itens: [
+      { Produto: 'Notebook', Quantidade: 1, Preco: 4500 },
+      { Produto: 'Mouse', Quantidade: 2, Preco: 150 }
+    ],
+    Total: 4800
+  },
+  {
+    _id: ObjectId('69aa28d7ef4fdc8e387c290e'),
+    Cliente: 'Maria Oliveira',
+    Data: '2025-02-18',
+    Itens: [
+      { Produto: 'Teclado Mecanico', Quantidade: 1, Preco: 350 },
+      { Produto: 'Monitor 24', Quantidade: 1, Preco: 1200 }
+    ],
+    Total: 1550
+  }
+]
+Loja> db.Pedidos.insertMany([
+| {
+|  "Cliente": "João Silva",
+|  "Data": "2025-02-20",
+|  "Itens": [
+|    {"Produto": "Notebook", "Quantidade": 1, "Preco": 4500},
+|    {"Produto": "Mouse", "Quantidade": 2, "Preco": 150}
+|  ],
+|  "Total": 4800
+| },
+| {
+|  "Cliente": "Maria Oliveira",
+|  "Data": "2025-02-18",
+|  "Itens": [
+|    {"Produto": "Teclado Mecanico", "Quantidade": 1, "Preco": 350},
+|    {"Produto": "Monitor 24", "Quantidade": 1, "Preco": 1200}
+|  ],
+|  "Total": 1550
+| }
+| ])
